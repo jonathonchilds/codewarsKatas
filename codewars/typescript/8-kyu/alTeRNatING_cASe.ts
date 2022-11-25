@@ -17,3 +17,16 @@ function toAlternatingCase(soft) {
 let soft = 'HellO WorlD'
 
 toAlternatingCase(soft)
+
+
+- - - - - ALSO WORKS - - - - - 
+// export function toAlternatingCase(s: string): string {
+//   return s.split("").map(a => a === a.toUpperCase()? a.toLowerCase(): a.toUpperCase()).join('')
+// }
+
+// export function toAlternatingCase(s: string): string {
+//   return s.replace(/./g, x => /[a-z]/.test(x) ? x.toUpperCase() : x.toLowerCase());
+// }
+
+
+
