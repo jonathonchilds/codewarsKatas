@@ -43,85 +43,48 @@ export function points(games: string[]): number {
   return counter
 }
 
-// function points(games: string[]): number {
-//   let total = 0
-//   let mappedGames = games.map((number) => number.split(''))
-//   for (let i = 0; i < mappedGames.length; i++) {
-//     if (
-//       mappedGames.map((number) => number[0]) >
-//       mappedGames.map((number) => number[2])
-//     ) {
-//       total = total + 3
-//     } else if (
-//       mappedGames.map((number) => number[0]) <
-//       mappedGames.map((number) => number[2])
-//     ) {
-//       total = total + 0
-//     }
-//     return total
-//   }
-//   return total
-// }
-
-// points(games)
-
-//   This is a good direction.
+// OTHER SOLUTIONS:
 //
+//
+//
+// export function points(games : string[]): number {
+//   return games.reduce((prev, curr) => {
+//     const [ourTeamScore, opponentScore] = curr.split(':');
 
-// const games = ["1:0","2:0","3:0","4:0","2:1","3:1","4:1","3:2","4:2","4:3"]
+//     if (ourTeamScore === opponentScore) return prev + 1;
 
-// function points(games : string[]): number {
-// for (let i = 0; i < games.length - 1; i++) {
-//   let homeScore = games.map(number => number.split('')).map(number => parseInt(number[0]))
-//   let awayScore = games.map(number => number.split('')).map(number => parseInt(number[2]))
-//   return awayScore
-
-// const games = [
-//   '1:0',
-//   '2:0',
-//   '3:0',
-//   '4:0',
-//   '2:1',
-//   '3:1',
-//   '4:1',
-//   '3:2',
-//   '4:2',
-//   '4:3',
-// ]
-
-// function points(games: string[]): number {
-//   let total = 0
-//   for (let i = 0; i < games.length; i++) {
-//     if (
-//       games[i]
-//         .map((number) => number.split(''))
-//         .map((number) => parseInt(number[0])) >
-//       games[i + 2]
-//         .map((number) => number.split(''))
-//         .map((number) => parseInt(number[2]))
-//     ) {
-//       total = total + 3
-//     } else if (
-//       games[i]
-//         .map((number) => number.split(''))
-//         .map((number) => parseInt(number[0])) <
-//       games[i + 2]
-//         .map((number) => number.split(''))
-//         .map((number) => parseInt(number[2]))
-//     ) {
-//       total = total + 0
-//     } else if (
-//       games[i]
-//         .map((number) => number.split(''))
-//         .map((number) => parseInt(number[0])) ==
-//       games[i + 2]
-//         .map((number) => number.split(''))
-//         .map((number) => parseInt(number[2]))
-//     ) {
-//       total = total + 1
+//     if (ourTeamScore > opponentScore) {
+//       return prev + 3;
+//     } else {
+//       return prev;
 //     }
-//   }
-//   return total
+//   }, 0);
 // }
-
-// points(games)
+//
+//-----------------------------------------
+//
+//export const points = (games : string[]): number =>
+// games.reduce((sum, score) => {
+//   const goals = score.split(':')
+//   return sum + (goals[0] > goals[1] ? 3 : goals[0] < goals[1] ? 0 : 1)
+// }, 0)
+//
+//-----------------------------------------
+//
+// Export function points(games : string[]): number {
+//   let teamTotal = 0
+//   for (let i of games) {
+//     if (+i[0] > +i[2]) teamTotal += 3
+//     else if (+i[0] < +i[2]) continue
+//     else if (+i[0] === +i[2]) teamTotal++
+//       continue
+//   }
+//   return teamTotal
+// }
+//
+//-----------------------------------------
+//
+//export function points(games: string[]): number {
+//   const results = games.map((v) => [+v.split(":")[0], +v.split(":")[1]])
+//   return results.reduce((a, [x, y]) => (x > y ? a + 3 : x === y ? a + 1 : a), 0)
+// }
